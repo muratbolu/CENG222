@@ -13,6 +13,8 @@
 \setlength{\evensidemargin}{0.0cm}
 
 %misc libraries goes here
+\usepackage{amsthm}
+\usepackage{mathtools}
 
 \begin{document}
 
@@ -63,18 +65,116 @@ of occurring,
 
 \subsection*{b)} 
 
+I would roll the blue die thrice. By using the linearity of expectation,
+
+\begin{align*}
+    \shortintertext{
+        \[ E(\text{3 Blue dice}) [0.5ex]= 3 \cdot E(\text{Blue die}) = 10.5 \]
+    } 
+    E(\text{One of each dice}) &= E(\text{Blue die})
+                                + E(\text{Yellow die})
+                                + E(\text{Red die}) \\
+                               &= 3.5 + 3 + 3 \\
+                               &= 9.5
+    \shortintertext{\[\]}
+    \shortintertext{\[ 10.5 > 9.5 \]}
+\end{align*}
+
 \subsection*{c)} 
+
+If the value of the yellow die is 8, then it is no longer a random variable.
+Its expected value is trivially 8.
+I would choose rolling one of each die this time, since,
+
+\begin{align*}
+    E(\text{One of each dice}) &= E(\text{Blue die})
+                                + E(\text{Yellow die})
+                                + E(\text{Red die}) \\
+                               &= 3.5 + 8 + 3 \\
+                               &= 14.5
+    \shortintertext{\[\]}
+    \shortintertext{\[ 14.5 > 9.5 \]}
+\end{align*}
 
 \subsection*{d)} 
 
+By using Bayes theorem and the law of total probability,
+
+\begin{align*}
+    P(\text{Die is red} \mid \text{Value is 3})
+        &= \frac{P(\text{Value is 3} \mid \text{Die is red})
+                    \cdot P(\text{Die is red})}
+                {P(\text{Value is 3})} \\[1.5ex]
+        &= \frac{P(\text{V}_3 \mid \text{D}_\text{r})
+                    \cdot P(\text{D}_\text{r})}
+                {P(\text{V}_3 \mid \text{D}_\text{b})
+                    \cdot P(\text{D}_\text{b}) +
+                 P(\text{V}_3 \mid \text{D}_\text{y})
+                    \cdot P(\text{D}_\text{y}) +
+                 P(\text{V}_3 \mid \text{D}_\text{r})
+                    \cdot P(\text{D}_\text{r})} \\[1.5ex]
+        &= \frac{\tfrac{2}{10} \cdot \tfrac{1}{3}}
+                {\tfrac{1}{6} \cdot \tfrac{1}{3}
+                + \tfrac{3}{8} \cdot \tfrac{1}{3}
+                + \tfrac{2}{10} \cdot \tfrac{1}{3}} \\[1.5ex]
+        &= \frac{\tfrac{2}{10}}
+                {\tfrac{1}{6} + \tfrac{3}{8} + \tfrac{2}{10}} \\[1.5ex]
+        &= \frac{\tfrac{1}{5}}
+                {\tfrac{1}{6} + \tfrac{3}{8} + \tfrac{1}{5}} \\[1.5ex]
+        &= \frac{24}{20 + 45 + 24} \\[1.5ex]
+        &= \frac{24}{89}
+\end{align*}
+
 \subsection*{e)} 
 
+The total value can be 5 in four different ways, namely $(1, 4), (2, 3), (3, 2),
+(4, 1)$, where the first element represent the value of the blue die and the
+second element represent the value of the yellow die.
+Since these are independent events, simple multiplication is sufficient.
+
+\begin{align*}
+    P(\text{Blue die is 1}) \cdot P(\text{Yellow die is 4})
+        &= \tfrac{1}{6} \cdot \tfrac{1}{8} = \tfrac{1}{48} \\[0.5ex]
+    P(\text{Blue die is 2}) \cdot P(\text{Yellow die is 3})
+        &= \tfrac{1}{6} \cdot \tfrac{3}{8} = \tfrac{3}{48} \\[0.5ex]
+    P(\text{Blue die is 3}) \cdot P(\text{Yellow die is 2})
+        &= \tfrac{1}{6} \cdot \tfrac{0}{8} = 0 \\[0.5ex]
+    P(\text{Blue die is 4}) \cdot P(\text{Yellow die is 1})
+        &= \tfrac{1}{6} \cdot \tfrac{3}{8} = \tfrac{3}{48} \\[0.5ex]
+    \frac{1}{48} + \frac{3}{48} + 0 + \frac{3}{48} = \frac{7}{48}
+\end{align*}
 
 \section*{Answer 2}
 
 \subsection*{a)} 
 
+The event of a specific distributor offering a discount that day can be thought
+of being a Bernouilli trial, and the probability of a specific amount of
+distributors offering a discount that day can be calculated using Binomial
+distribution.
+Since Company A has a large amount of distributors and a small chance of
+offering a discount, we can use Poisson approximation of Binomial distribution
+to calculate the probability of at least four distributors offering a discount
+tomorrow.
+\newline
+The number of distributors are $n = 80$, chance of offering a discount is
+$p = 0.025$, and the expected value of discounts per day are $n \cdot p = 2$.
+The probability of at least four distributors offering a discount tomorrow is
+$F_Y(4) = 0.9473$, where $F_Y$ is the cumulative distribution function of
+Poisson distribution with $\lambda = 2$.
+
 \subsection*{b)} 
+
+Assuming the customer is only going to buy a phone when there is a discount
+in $A$ or $B$, one can calculate the probability of buying a phone by subtracting the probability of no discounts happening in two days from 1.
+\newline
+There will be no discounts if both $A$ and $B$ have no discounts.
+\begin{itemize}
+    \item $A$ will have no discounts with the probability $P(0) = 0.0183$, where $P$ is the probability density function of Poisson distribution with $\lambda = 4$, since we are looking at a two day timespan.
+    \item $B$ will have no discounts with the probability $0.9 \cdot 0.9 = 0.81$.
+    \item They will both have no discounts with the probability $0.0183 \cdot 0.81 = 0.0148$.
+\end{itemize}
+Therefore, the customer will be able to buy the phone in two days with the probability $1 - 0.0148 = 0.9852$.
 
 
 \section*{Answer 3}
