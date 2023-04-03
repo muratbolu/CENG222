@@ -191,8 +191,9 @@ tomorrow.
 The number of distributors are $n = 80$, chance of offering a discount is
 $p = 0.025$, and the expected value of discounts per day are $n \cdot p = 2$.
 The probability of at least four distributors offering a discount tomorrow is
-$F_Y(4) = 0.9473$, where $F_Y$ is the cumulative distribution function of
-Poisson distribution with $\lambda = 2$.
+one minus the cumulative probability of at most three distributors offering a
+discount, i.e. $1 - F_Y(3) = 0.1429$ , where $F_Y$ is the cumulative
+distribution function of Poisson distribution with $\lambda = 2$.
 
 \subsection*{b)} 
 
