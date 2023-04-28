@@ -15,6 +15,7 @@
 %misc libraries goes here
 \usepackage{tikz}
 \newcommand{\boldP}{\textbf{\textit{P}}}
+\usepackage{graphicx}
 
 \begin{document}
 
@@ -169,17 +170,33 @@ and $p = 0.1$. Normal approximation has $\mu = 15$ and $\sigma = \sqrt{13.5} =
     &= 1 - \boldP \left\{ \frac{X - 15}{\sqrt{13.5}} < 2.0412 \right\} \\
     &= 1 - \Phi(2.0412) \\
     &= \Phi(-2.0412) \\
-    &= 0.0206 \\
+    &= 0.0206
 \end{align*}
+
+\newpage
 
 \section*{Answer 3}
 
+\begin{align*}
+  \boldP\{170 < X < 180\}
+    &= \boldP \left\{ \frac{170 - 175}{7}
+                    < \frac{X - 175}{7} < \frac{180 - 175}{7} \right\} \\
+    &= \boldP \left\{ -\frac{5}{7} < \frac{X - 175}{7} < \frac{5}{7} \right\} \\
+    &= \boldP \left\{ -0.7143 < \frac{X - 175}{7} < 0.7143 \right\} \\
+    &= \Phi(0.7143) - \Phi(-0.7143) \\
+    &= 0.7625 - 0.2375 \\
+    &= 0.5249
+\end{align*}
 
 \section*{Answer 4}
 
-\subsection*{a)} 
+\subsection*{a)}
 
-\subsection*{b)} 
+\includegraphics[width=\textwidth]{the2_hist.png}
+
+\subsection*{b)}
+
+\includegraphics[width=\textwidth]{the2_plot.png}
 
 \subsection*{c)} 
 
