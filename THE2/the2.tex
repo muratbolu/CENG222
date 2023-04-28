@@ -13,8 +13,8 @@
 \setlength{\evensidemargin}{0.0cm}
 
 %misc libraries goes here
-
 \usepackage{tikz}
+\newcommand{\boldP}{\textbf{\textit{P}}}
 
 \begin{document}
 
@@ -124,11 +124,29 @@ equals to $-20 < t_A - t_B < 20$ which means $t_B - 20 < t_A < t_B + 20$.
 \end{center}
 
 \noindent
-The area of the surface is $100 \cdot 100 - 2 \cdot 80 \cdot 80 \cdot \frac{1}{2} = 3600$. The volume of the space is $3600 \cdot \frac{1}{10000} = \frac{3600}{10000} = \frac{9}{25} = 0.36$.
+The area of the surface is $100 \cdot 100 - 2 \cdot 80 \cdot 80 \cdot
+\frac{1}{2} = 3600$. The volume of the space is $3600 \cdot \frac{1}{10000} =
+\frac{3600}{10000} = \frac{9}{25} = 0.36$.
+
+\newpage
 
 \section*{Answer 2}
 
-\subsection*{a)} 
+\subsection*{a)}
+
+This probability is binomially distributed with parameters $n = 150$, because
+150 people are selected from the population, and $p = 0.6$, because frequent
+shoppers are $60\%$ of the population. Since $n$ is large, normal approximation
+to binomial distribution with parameters $\mu = n \cdot p$ and $\sigma = \sqrt{n
+\cdot p \cdot (1 - p)}$ can be used. In that case, $\mu = 90$ and $\sigma = 6$.
+In order for the $65\%$ of the customers to be frequent shoppers, at least 97.5
+of them should be frequent shoppers.
+
+\begin{align*}
+  \boldP\{X > 97.5\}
+    &= \boldP \left\{ \frac{X - 90}{6} > \frac{97.5 - 90}{6} \right\} \\
+    &=
+\end{align*}
 
 \subsection*{b)} 
 
