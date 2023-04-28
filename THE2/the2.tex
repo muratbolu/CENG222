@@ -145,11 +145,32 @@ of them should be frequent shoppers.
 \begin{align*}
   \boldP\{X > 97.5\}
     &= \boldP \left\{ \frac{X - 90}{6} > \frac{97.5 - 90}{6} \right\} \\
-    &=
+    &= \boldP \left\{ \frac{X - 90}{6} > \frac{7.5}{6} \right\} \\
+    &= \boldP \left\{ \frac{X - 90}{6} > 1.25 \right\} \\
+    &= 1 - \boldP \left\{ \frac{X - 90}{6} < 1.25 \right\} \\
+    &= 1 - \Phi(1.25) \\
+    &= \Phi(-1.25) \\
+    &= 0.1056
 \end{align*}
 
-\subsection*{b)} 
+\subsection*{b)}
 
+Similarly, this probability is binomially distributed with parameters $n = 150$,
+and $p = 0.1$. Normal approximation has $\mu = 15$ and $\sigma = \sqrt{13.5} =
+3.6742$ as parameters. At most 22.5 of customers must be rare shoppers.
+
+\begin{align*}
+  \boldP\{X > 22.5\}
+    &= \boldP \left\{ \frac{X - 15}{\sqrt{13.5}}
+                    > \frac{22.5 - 15}{\sqrt{13.5}} \right\} \\
+    &= \boldP \left\{ \frac{X - 15}{\sqrt{13.5}}
+                    > \frac{7.5}{\sqrt{13.5}} \right\} \\
+    &= \boldP \left\{ \frac{X - 15}{\sqrt{13.5}} > 2.0412 \right\} \\
+    &= 1 - \boldP \left\{ \frac{X - 15}{\sqrt{13.5}} < 2.0412 \right\} \\
+    &= 1 - \Phi(2.0412) \\
+    &= \Phi(-2.0412) \\
+    &= 0.0206 \\
+\end{align*}
 
 \section*{Answer 3}
 
