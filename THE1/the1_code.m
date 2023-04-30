@@ -29,9 +29,9 @@ printf("First option: %.2f\nSecond option: %.2f\
 \nPercentage of cases: %2.2f%%\n", F, S, isBigger)
 
 function out = getValues(x)
-  b = x(1); y = x(2); r = x(3);
-  b = [1 2 3 4 5 6](1, b);
-  y = [1 1 1 3 3 3 4 8](1, y);
-  r = [2 2 2 2 2 3 3 4 4 6](1, r);
-  out = [b; y; r];
+    b = x(1); y = x(2); r = x(3);
+    b = [1 2 3 4 5 6](1, b);
+    y = [1 1 1 3 3 3 4 8](1, y);
+    r = [2 2 2 2 2 3 3 4 4 6](1, r);
+    out = [b; y; r];
 endfunction
