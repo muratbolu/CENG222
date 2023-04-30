@@ -194,17 +194,15 @@ and $p = 0.1$. Normal approximation has $\mu = 15$ and $\sigma = \sqrt{13.5} =
 
 \vspace{-5mm}
 \begin{align*}
-  \boldP\{X > 150 \cdot 0.15\}
-    &= \boldP\{X > 22.5\} \\
+  \boldP\{X < 150 \cdot 0.15\}
+    &= \boldP\{X < 22.5\} \\
     &= \boldP \left\{ \frac{X - 15}{\sqrt{13.5}}
-                    > \frac{22.5 - 15}{\sqrt{13.5}} \right\} \\
+                    < \frac{22.5 - 15}{\sqrt{13.5}} \right\} \\
     &= \boldP \left\{ \frac{X - 15}{\sqrt{13.5}}
-                    > \frac{7.5}{\sqrt{13.5}} \right\} \\
-    &= \boldP \left\{ \frac{X - 15}{\sqrt{13.5}} > 2.0412 \right\} \\
-    &= 1 - \boldP \left\{ \frac{X - 15}{\sqrt{13.5}} < 2.0412 \right\} \\
-    &= 1 - \Phi(2.0412) \\
-    &= \Phi(-2.0412) \\
-    &= 0.0206
+                    < \frac{7.5}{\sqrt{13.5}} \right\} \\
+    &= \boldP \left\{ \frac{X - 15}{\sqrt{13.5}} < 2.0412 \right\} \\
+    &= \Phi(2.0412) \\
+    &= 0.9794
 \end{align*}
 
 \newpage
@@ -294,6 +292,10 @@ going to use 75.5 instead.
     &= 0.2695
 \end{align*}
 
+\noindent
+This was the theoretical part. Now, we will conduct experiments and compare our
+results with theoretical estimations. The Octave code is on the next page.
+
 \newpage
 
 \noindent
@@ -347,6 +349,8 @@ with a screenshot of some outputs,
   \includegraphics[scale = 1]{the2_outputs.png}
 \end{center}
 
-The findings agree with our calculations. As the number of iterations increase, the probabilities are expected to approach their theoretical values.
+\noindent
+The findings agree with our calculations. As the number of iterations increases,
+the probabilities are expected to approach their theoretical values.
 
 \end{document}
