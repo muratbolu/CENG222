@@ -18,6 +18,35 @@
 \usepackage{graphicx}
 \allowdisplaybreaks
 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=none,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+
+\lstset{style=myStyle}
+
 \begin{document}
 
 \section*{Student Information }
@@ -211,7 +240,9 @@ The probability of an adult having a height between 170 cm and 180 cm is
 $0.5249$ as found in Answer 3. Therefore, among 150 randomly selected adults,
 the probability that at least 45\%, 50\%, or 55\% of them having heights between
 170 cm and 180 cm is binomially distributed, with parameters $n = 150$, and $p =
-0.5249$. Normal approximation has parameters $\mu = 78.7424$, and $\sigma = \sqrt{37.4066} = 6.1161$.
+0.5249$. Normal approximation has parameters $\mu = 78.7424$, and $\sigma =
+\sqrt{37.4066} = 6.1161$. For continuity correction, in the 50\% case, we are
+going to use 75.5 instead.
 
 \begin{align*}
   \boldP\{X > 150 \cdot 0.45\}
@@ -224,7 +255,7 @@ the probability that at least 45\%, 50\%, or 55\% of them having heights between
     &= 1 - \boldP \left\{ \frac{X - 78.74}{6.12} < -1.84 \right\} \\
     &= 1 - \Phi(-1.84) \\
     &= \Phi(1.84) \\
-    &= 0.9671 \\
+    &= 0.9670 \\
 \\
   \boldP\{X > 150 \cdot 0.50\}
     &= \boldP\{X > 75\} \\
@@ -232,13 +263,13 @@ the probability that at least 45\%, 50\%, or 55\% of them having heights between
     &= \boldP \left\{ \frac{X - 78.74}{6.12}
                     > \frac{75.5 - 78.74}{6.12} \right\} \\
     &= \boldP \left\{ \frac{X - 78.74}{6.12}
-                    > \frac{-3.74}{6.12} \right\} \\
-    &= \boldP \left\{ \frac{X - 78.74}{6.12} > -0.61 \right\} \\
-    &= 1 - \boldP \left\{ \frac{X - 78.74}{6.12} < -0.61 \right\} \\
-    &= 1 - \Phi(-0.61) \\
-    &= \Phi(0.61) \\
-    &= 0.7291 \\
-\\ \\ \\ \\ \\
+                    > \frac{-3.24}{6.12} \right\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12} > -0.53 \right\} \\
+    &= 1 - \boldP \left\{ \frac{X - 78.74}{6.12} < -0.53 \right\} \\
+    &= 1 - \Phi(-0.53) \\
+    &= \Phi(0.53) \\
+    &= 0.7020 \\
+\\
   \boldP\{X > 150 \cdot 0.55\}
     &= \boldP\{X > 82.5\} \\
     &= \boldP \left\{ \frac{X - 78.74}{6.12}
@@ -249,7 +280,51 @@ the probability that at least 45\%, 50\%, or 55\% of them having heights between
     &= 1 - \boldP \left\{ \frac{X - 78.74}{6.12} < 0.61 \right\} \\
     &= 1 - \Phi(0.61) \\
     &= \Phi(-0.61) \\
-    &= 0.2709
+    &= 0.2695
 \end{align*}
+
+\noindent
+The Octave code is as follows,
+\begin{lstlisting}[language=Octave]
+  % Load statistics module for normal probability density function
+  pkg load statistics;
+
+  % Define constants
+  N = 1000;
+  mean = 175;
+  std_dev = 7;
+
+  % Generate heights as a column vector
+  heights = randn(N, 1);
+  heights *= std_dev;
+  heights += mean;
+
+  % Create and print the histogram of heights
+  hist(heights, 10);
+  print("the2_hist", "-dpng");
+
+  % Create and print the normal PDF's with various standard deviations
+  x = 150:0.1:200;
+  hold off;
+  plot(x, normpdf(x, mean, 6), ";\\sigma = 6;");
+  hold on;
+  plot(x, normpdf(x, mean, 7), ";\\sigma = 7;");
+  plot(x, normpdf(x, mean, 8), ";\\sigma = 8;");
+  print("the2_plot", "-dpng");
+
+  % Generate heights as a 150x1000 matrix
+  heights = randn(150, N);
+  heights *= std_dev;
+  heights += mean;
+
+  % Filter heights and sum the successes
+  heights = (heights > 170) & (heights < 180);
+  heights = sum(heights);
+
+  % Calculate probabilities
+  p1 = sum(heights > 67.5)/N
+  p2 = sum(heights > 75)/N
+  p3 = sum(heights > 82.5)/N
+\end{lstlisting}
 
 \end{document}

@@ -25,4 +25,16 @@ plot(x, normpdf(x, mean, 7), ";\\sigma = 7;");
 plot(x, normpdf(x, mean, 8), ";\\sigma = 8;");
 print("the2_plot", "-dpng");
 
+% Generate heights as a 150x1000 matrix
+heights = randn(150, N);
+heights *= std_dev;
+heights += mean;
 
+% Filter heights and sum the successes
+heights = (heights > 170) & (heights < 180);
+heights = sum(heights);
+
+% Calculate probabilities
+p1 = sum(heights > 67.5)/N
+p2 = sum(heights > 75)/N
+p3 = sum(heights > 82.5)/N
