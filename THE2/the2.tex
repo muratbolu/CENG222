@@ -228,9 +228,20 @@ and $p = 0.1$. Normal approximation has $\mu = 15$ and $\sigma = \sqrt{13.5} =
 
 \includegraphics[width=\textwidth]{the2_hist.png}
 
+The histogram of the data is similar to the probability density function of the
+normal distribution, with parameters $\mu = 175$ and $\sigma = 7$. If we were to
+make more trials and visualize the result with more bars, the resulting chart
+would be closer to normal PDF. This is essentially Riemann sum of the integral
+of the PDF.
+
 \subsection*{b)}
 
 \includegraphics[width=\textwidth]{the2_plot.png}
+
+The probability density functions all have the same mean of 175, while their
+standard deviations are different. As the standard deviation increases, the
+probabilites of values closer to the mean decreases and the probabilities of
+values further from the mean increases.
 
 \newpage
 
@@ -269,7 +280,7 @@ going to use 75.5 instead.
     &= 1 - \Phi(-0.53) \\
     &= \Phi(0.53) \\
     &= 0.7020 \\
-\\
+\\ \\ \\ \\
   \boldP\{X > 150 \cdot 0.55\}
     &= \boldP\{X > 82.5\} \\
     &= \boldP \left\{ \frac{X - 78.74}{6.12}
@@ -282,6 +293,8 @@ going to use 75.5 instead.
     &= \Phi(-0.61) \\
     &= 0.2695
 \end{align*}
+
+\newpage
 
 \noindent
 The Octave code is as follows,
@@ -326,5 +339,14 @@ The Octave code is as follows,
   p2 = sum(heights > 75)/N
   p3 = sum(heights > 82.5)/N
 \end{lstlisting}
+
+\noindent
+with a screenshot of some outputs,
+
+\begin{center}
+  \includegraphics[scale = 1]{the2_outputs.png}
+\end{center}
+
+The findings agree with our calculations. As the number of iterations increase, the probabilities are expected to approach their theoretical values.
 
 \end{document}
