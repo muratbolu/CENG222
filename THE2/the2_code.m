@@ -24,3 +24,5 @@ hold on;
 plot(x, normpdf(x, mean, 7), ";\\sigma = 7;");
 plot(x, normpdf(x, mean, 8), ";\\sigma = 8;");
 print("the2_plot", "-dpng");
+
+

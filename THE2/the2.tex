@@ -16,10 +16,11 @@
 \usepackage{tikz}
 \newcommand{\boldP}{\textbf{\textit{P}}}
 \usepackage{graphicx}
+\allowdisplaybreaks
 
 \begin{document}
 
-\section*{Student Information } 
+\section*{Student Information }
 %Write your full name and id number between the colon and newline
 %Put one empty space character after colon and before newline
 Full Name : Murat Bolu \\
@@ -143,8 +144,10 @@ to binomial distribution with parameters $\mu = n \cdot p$ and $\sigma = \sqrt{n
 In order for the $65\%$ of the customers to be frequent shoppers, at least 97.5
 of them should be frequent shoppers.
 
+\vspace{-5mm}
 \begin{align*}
-  \boldP\{X > 97.5\}
+  \boldP\{X > 150 \cdot 0.65\}
+    &= \boldP\{X > 97.5\} \\
     &= \boldP \left\{ \frac{X - 90}{6} > \frac{97.5 - 90}{6} \right\} \\
     &= \boldP \left\{ \frac{X - 90}{6} > \frac{7.5}{6} \right\} \\
     &= \boldP \left\{ \frac{X - 90}{6} > 1.25 \right\} \\
@@ -160,8 +163,10 @@ Similarly, this probability is binomially distributed with parameters $n = 150$,
 and $p = 0.1$. Normal approximation has $\mu = 15$ and $\sigma = \sqrt{13.5} =
 3.6742$ as parameters. At most 22.5 of customers must be rare shoppers.
 
+\vspace{-5mm}
 \begin{align*}
-  \boldP\{X > 22.5\}
+  \boldP\{X > 150 \cdot 0.15\}
+    &= \boldP\{X > 22.5\} \\
     &= \boldP \left\{ \frac{X - 15}{\sqrt{13.5}}
                     > \frac{22.5 - 15}{\sqrt{13.5}} \right\} \\
     &= \boldP \left\{ \frac{X - 15}{\sqrt{13.5}}
@@ -198,6 +203,53 @@ and $p = 0.1$. Normal approximation has $\mu = 15$ and $\sigma = \sqrt{13.5} =
 
 \includegraphics[width=\textwidth]{the2_plot.png}
 
-\subsection*{c)} 
+\newpage
+
+\subsection*{c)}
+
+The probability of an adult having a height between 170 cm and 180 cm is
+$0.5249$ as found in Answer 3. Therefore, among 150 randomly selected adults,
+the probability that at least 45\%, 50\%, or 55\% of them having heights between
+170 cm and 180 cm is binomially distributed, with parameters $n = 150$, and $p =
+0.5249$. Normal approximation has parameters $\mu = 78.7424$, and $\sigma = \sqrt{37.4066} = 6.1161$.
+
+\begin{align*}
+  \boldP\{X > 150 \cdot 0.45\}
+    &= \boldP\{X > 67.5\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12}
+                    > \frac{67.5 - 78.74}{6.12} \right\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12}
+                    > \frac{-11.24}{6.12} \right\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12} > -1.84 \right\} \\
+    &= 1 - \boldP \left\{ \frac{X - 78.74}{6.12} < -1.84 \right\} \\
+    &= 1 - \Phi(-1.84) \\
+    &= \Phi(1.84) \\
+    &= 0.9671 \\
+\\
+  \boldP\{X > 150 \cdot 0.50\}
+    &= \boldP\{X > 75\} \\
+    &= \boldP\{X > 75.5\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12}
+                    > \frac{75.5 - 78.74}{6.12} \right\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12}
+                    > \frac{-3.74}{6.12} \right\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12} > -0.61 \right\} \\
+    &= 1 - \boldP \left\{ \frac{X - 78.74}{6.12} < -0.61 \right\} \\
+    &= 1 - \Phi(-0.61) \\
+    &= \Phi(0.61) \\
+    &= 0.7291 \\
+\\ \\ \\ \\ \\
+  \boldP\{X > 150 \cdot 0.55\}
+    &= \boldP\{X > 82.5\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12}
+                    > \frac{82.5 - 78.74}{6.12} \right\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12}
+                    > \frac{3.76}{6.12} \right\} \\
+    &= \boldP \left\{ \frac{X - 78.74}{6.12} > 0.61 \right\} \\
+    &= 1 - \boldP \left\{ \frac{X - 78.74}{6.12} < 0.61 \right\} \\
+    &= 1 - \Phi(0.61) \\
+    &= \Phi(-0.61) \\
+    &= 0.2709
+\end{align*}
 
 \end{document}
