@@ -13,6 +13,37 @@
 \usepackage{indentfirst}
 \usepackage{amsfonts}
 
+\usepackage{graphicx}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=none,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+
+\lstset{style=myStyle}
+
 \begin{document}
 
 \section*{Student Information}
@@ -174,5 +205,27 @@ evidence that the number of rainy days depends on the season, with a
 significance level above 99.5\%, because \textit{P}-value is less than $0.005$.
 
 \section*{Answer 4}
+
+\noindent
+The Octave code is as follows,
+\begin{lstlisting}[language=Octave]
+% Load statistics module for chi-square independence test
+pkg load statistics;
+
+% Define the matrix
+X = [34 32 15 19; 56 58 75 71];
+
+% Use library function
+[pval, chisq, df] = chisquare_test_independence(X)
+\end{lstlisting}
+
+\noindent
+with a screenshot of some outputs,
+
+\begin{center}
+  \includegraphics[scale = 1]{the3_output.png}
+\end{center}
+
+The findings agree with our calculations.
 
 \end{document}
