@@ -24,8 +24,50 @@ ID : 2521300 \\
 
 \section*{Answer 1}
 \subsection*{a)}
+
+Since the sample is small and the standard deviation of the population is
+unknown, Student's \textit{t} distribution can be used. The critical value of
+\textit{t} distribution is $\textit{t}_{\alpha/2} = \textit{t}_{0.01} = 2.602$
+with $n-1=15$ degrees of freedom.
+
+\begin{align*}
+    \bar{X}&= \frac{8.4+7.8+6.4+6.7+6.6+6.6+7.2+4.1+
+                    5.4+6.9+7.0+6.9+7.4+6.5+6.5+8.5}{16} \\
+    &= 6.806
+\end{align*}
+
+\begin{align*}
+    s &= \sqrt{\frac{\sum_{i=1}^{n}(X_i - \bar{X})^2 }{n-1}} \\
+    &= \sqrt{\frac{\sum_{i=1}^{16}(X_i - 6.806)^2}{15}} \\
+    &= 1.055
+\end{align*}
+
+The 98\% confidence interval $\bar{X} \pm \textit{t}_{\alpha/2}
+\frac{s}{\sqrt{n}}$ becomes $6.806 \pm 2.602 \cdot \frac{1.055}{4} =
+[6.120,7.493]$.
+
 \subsection*{b)}
+
+Let $\mu_1$ be the initial gasoline consumption per 100 kilometers and $\mu_2$
+be the improved gasoline consumption per 100 kilometers. Therefore, the null
+hypothesis $H_0$ is $\mu_1 = \mu_2$ and the alternative hypothesis $H_A$ is
+$\mu_1 > \mu_2$. Since we don't know the population standard deviation, we can
+use T-statistic.
+
+\begin{align*}
+    \textit{t} &= \frac{\bar{X} - \mu}{s / \sqrt{n}} \\
+    &= \frac{6.806 - 7.5}{1.055 / 4} \\
+    &= -2.629
+\end{align*}
+
+The rejection region is $R = (-\infty, -\textit{t}_{\alpha}] = (-\infty,
+-\textit{t}_{0.05}] = (-\infty, -1.753]$ with 15 degrees of freedom, since we
+are using a left-tail alternative. Since $t \in R$, we can reject the null
+hypothesis. There is sufficient evidence that the improvement was effective.
+
 \subsection*{c)}
+
+Since $\bar{X} = 6.806 > 6.5$, we can immediately accept the null hypothesis because the T-statistic is positive and the rejection region includes zero.
 
 \section*{Answer 2}
 \subsection*{a)}
