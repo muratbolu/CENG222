@@ -1,6 +1,6 @@
 
-% Load statistics module for
-%pkg load statistics;
+% Load statistics module for inverse standard normal distribution
+pkg load statistics;
 
 % Define the constants
 poissLambdaBulk = 50;
@@ -38,22 +38,25 @@ function result = generateTotalSize(poissLambda, alpha, gamLambda)
   endfor
 endfunction
 
+% Number of times total cargo exceeded threshold
 cargoExceeds = 0;
+% Vector of total cargo sizes
 sums = [];
+
 for i = 1:sizeMonteCarlo;
   sumBulk = generateTotalSize(poissLambdaBulk, alphaBulk, gamLambdaBulk);
   sumContainer = generateTotalSize(poissLambdaContainer, alphaContainer, gamLambdaContainer);
   sumOil = generateTotalSize(poissLambdaOil, alphaOil, gamLambdaOil);
   sumAll = sumBulk + sumContainer + sumOil;
-  sums = [sums, sumAll];
+  sums = [sums, sumAll]; % Append to sums vector
   cargoExceeds += (sumAll > weightThreshold);
 endfor
 
+% Probability that the total cargo exceeded the threshold
 probabilityExceeds = cargoExceeds/sizeMonteCarlo;
 % X is average daily total cargo
 X = mean(sums);
+% Standard deviation of X
 stdDevX = std(sums);
 
-fprintf("Estimated probability: %f\nExpected weight: %f\nStandard deviation: %f\n", probabilityExceeds, X, stdDevX);
-
-
+fprintf("Estimated probability: %.3f\nExpected weight: %.2f\nStandard deviation: %.2f\n", probabilityExceeds, X, stdDevX);
