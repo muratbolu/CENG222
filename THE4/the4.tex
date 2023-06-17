@@ -87,8 +87,8 @@ function result = generateTotalSize(poissLambda, alpha, gamLambda)
   i = 0;
   F = exp(-poissLambda);
   while (F < U);
-    F += exp(-poissLambda) * poissLambda^i / gamma(i+1);
     i += 1;
+    F += exp(-poissLambda) * poissLambda^i / gamma(i+1);
   endwhile
   result = 0;
   for j = 1:i;
@@ -142,7 +142,7 @@ exceeding the cargo weight threshold is around $17\%$.
 \subsection*{b)}
 
 Our estimate for the average amount of total cargo weight that arrives to the
-port every day is around $270$ thousand tons. We calculated this value by taking
+port every day is around $260$ thousand tons. We calculated this value by taking
 the average of total cargo weight of every iteration.
 
 \subsection*{c)}

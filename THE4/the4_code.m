@@ -29,8 +29,8 @@ function result = generateTotalSize(poissLambda, alpha, gamLambda)
   i = 0;
   F = exp(-poissLambda);
   while (F < U);
-    F += exp(-poissLambda) * poissLambda^i / gamma(i+1);
     i += 1;
+    F += exp(-poissLambda) * poissLambda^i / gamma(i+1);
   endwhile
   result = 0;
   for j = 1:i;
